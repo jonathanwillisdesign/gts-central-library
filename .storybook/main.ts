@@ -9,6 +9,7 @@ const config: StorybookConfig = {
     "@storybook/addon-designs",
   ],
   framework: "@storybook/react-vite",
+  staticDirs: ["./assets"],
   // Storybook uses vite.config.ts automatically, which has SVGR configured
 };
 export default config;

@@ -4,7 +4,7 @@ import { create } from "storybook/theming/create";
 const theme = create({
   base: "light",
   brandTitle: "Locker Room",
-  brandImage: "./assets/logo.svg",
+  brandImage: "/logo.svg",
   brandTarget: "_self",
 
   // UI colors
