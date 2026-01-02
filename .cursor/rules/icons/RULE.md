@@ -10,129 +10,72 @@ globs:
 
 ## Overview
 
-Icons in the GTS Central Library are pre-built React components stored in `src/icons/`. This approach ensures reliability across all environments (Storybook, Vite, etc.) without relying on build-time SVG transformations.
+Icons in the GTS Central Library use an SVG sprite system. Individual SVG files are stored in `src/icons/svg/` and automatically combined into a sprite at build time using `vite-plugin-svg-icons`.
 
 ## File Structure
 
 ```
 src/icons/
-  ├── index.ts              # Barrel export for all icons
-  ├── ArrowRightIcon.tsx    # Icon component with weight variants
-  ├── CheckIcon.tsx         # Another icon example
-  └── ...
+  ├── svg/                  # SVG icon files (one per icon)
+  │   ├── arrow-right.svg
+  │   ├── check.svg
+  │   └── ...
+  └── index.ts              # Type exports
 ```
 
-## Icon Component Pattern
+## Adding a New Icon
 
-Each icon follows this pattern:
+### 1. Export SVG from Figma
+
+- Export the icon as SVG from Figma
+- Ensure the SVG uses `currentColor` for stroke/fill to inherit text color
+- Use the `--gl-icon-stroke-width` CSS variable for stroke-based icons
+
+### 2. Save the SVG file
+
+Save the SVG to `src/icons/svg/` with a kebab-case filename:
+
+```svg
+<!-- src/icons/svg/check.svg -->
+<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path
+    d="M5 12L10 17L19 8"
+    stroke="currentColor"
+    stroke-width="var(--gl-icon-stroke-width)"
+    stroke-linecap="square"
+    stroke-linejoin="miter"
+  />
+</svg>
+```
+
+### 3. Update the IconName type
+
+Add the new icon name to the `IconName` type in `src/components/Icon/Icon.tsx`:
 
 ```tsx
-import React from "react";
+export type IconName = "arrow-right" | "check";
+```
 
-export type IconWeight = "regular" | "bold";
+### 4. Update stories (optional)
 
-interface IconComponentProps extends React.SVGProps<SVGSVGElement> {
-  weight?: IconWeight;
-}
+Add the new icon to the argTypes options in `src/stories/Icon.stories.tsx`:
 
-export const ArrowRightIcon = ({
-  weight = "regular",
-  ...props
-}: IconComponentProps) => {
-  if (weight === "bold") {
-    return (
-      <svg
-        viewBox="0 0 25 14"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        {...props}
-      >
-        {/* Bold weight path */}
-      </svg>
-    );
-  }
-
-  return (
-    <svg
-      viewBox="0 0 24 13"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      {...props}
-    >
-      {/* Regular weight path */}
-    </svg>
-  );
-};
+```tsx
+argTypes: {
+  name: {
+    control: "select",
+    options: ["arrow-right", "check"],
+    // ...
+  },
+},
 ```
 
 ## Key Requirements
 
-1. **Use `currentColor`** - All icons must use `fill="currentColor"` to inherit text color
-2. **Support weights** - Icons should support `regular` and `bold` weight variants
-3. **Spread props** - Always spread `...props` on the SVG element for className, style, etc.
-4. **No hardcoded dimensions** - Use viewBox only; let CSS control size via the Icon component
-5. **Export from index** - Add every new icon to `src/icons/index.ts`
-
-## Adding a New Icon
-
-1. **Get the SVG from Figma** - Export both regular and bold weight variants
-2. **Create the component file** in `src/icons/`:
-
-```tsx
-// src/icons/CheckIcon.tsx
-import React from "react";
-
-export type IconWeight = "regular" | "bold";
-
-interface CheckIconProps extends React.SVGProps<SVGSVGElement> {
-  weight?: IconWeight;
-}
-
-export const CheckIcon = ({ weight = "regular", ...props }: CheckIconProps) => {
-  if (weight === "bold") {
-    return (
-      <svg
-        viewBox="0 0 24 24"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        {...props}
-      >
-        <path d="..." fill="currentColor" />
-      </svg>
-    );
-  }
-
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      {...props}
-    >
-      <path d="..." fill="currentColor" />
-    </svg>
-  );
-};
-```
-
-3. **Export from index.ts**:
-
-```tsx
-export { CheckIcon } from "./CheckIcon";
-```
-
-4. **Add to iconMap** in `src/components/Icon/Icon.tsx`:
-
-```tsx
-import { CheckIcon } from "../../icons";
-
-const iconMap = {
-  "arrow-right": ArrowRightIcon,
-  check: CheckIcon,
-} as const;
-```
-
-5. **Update Icon stories** to include the new icon in argTypes options
+1. **Use `currentColor`** - All icons must use `stroke="currentColor"` or `fill="currentColor"` to inherit text color
+2. **Use stroke width token** - For stroke-based icons, use `stroke-width="var(--gl-icon-stroke-width)"` to support weight variants
+3. **No hardcoded dimensions** - Use `viewBox` only; let CSS control size via the Icon component
+4. **kebab-case filenames** - Icon filenames should be lowercase with hyphens (e.g., `arrow-right.svg`)
 
 ## Icon Component Usage
 
@@ -149,17 +92,35 @@ import { Icon } from "@gts/central-library";
 <Icon name="arrow-right" size="large" weight="bold" />
 
 // With custom className
-<Icon name="arrow-right" className="text-blue-500" />
+<Icon name="arrow-right" className="custom-class" />
+```
+
+## How the Sprite System Works
+
+1. **Build time**: `vite-plugin-svg-icons` scans `src/icons/svg/` and generates a sprite
+2. **Runtime**: The sprite is injected into the DOM via `virtual:svg-icons-register`
+3. **Usage**: The Icon component references symbols via `<use href="#icon-{name}">`
+
+### Sprite Registration
+
+The sprite is automatically registered in:
+- `src/main.tsx` - For the main app
+- `.storybook/preview.ts` - For Storybook
+
+```tsx
+import 'virtual:svg-icons-register'
 ```
 
 ## Design Token Integration
 
-Icons use these CSS classes from `Icon.module.css`:
+Icons use CSS classes from `Icon.module.css`:
 
-- `.icon` - Base styles (display, flex-shrink, fill)
+- `.icon` - Base styles (display, flex-shrink, color inheritance)
 - `.iconSmall` - 16x16px
 - `.iconMedium` - 24x24px
 - `.iconLarge` - 32x32px
+- `.weightRegular` - Sets `--gl-icon-stroke-width: var(--gl-icon-stroke-regular)` (1)
+- `.weightBold` - Sets `--gl-icon-stroke-width: var(--gl-icon-stroke-bold)` (1.5)
 
 ## Figma Reference
 

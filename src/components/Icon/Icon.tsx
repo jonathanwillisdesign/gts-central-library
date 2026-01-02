@@ -1,17 +1,10 @@
-import React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { clsx } from "clsx";
 import styles from "./Icon.module.css";
 
-// Import pre-built icon components
-import { ArrowRightIcon } from "../../icons";
-
-const iconMap = {
-  "arrow-right": ArrowRightIcon,
-  // Add more icons here as you create them
-} as const;
-
-export type IconName = keyof typeof iconMap;
+// Icon names correspond to SVG files in src/icons/svg/
+// e.g., "arrow-right" -> src/icons/svg/arrow-right.svg
+export type IconName = "arrow-right";
 export type IconWeight = "regular" | "bold";
 
 const iconVariants = cva(styles.icon, {
@@ -35,13 +28,13 @@ const iconVariants = cva(styles.icon, {
 export interface IconProps
   extends Omit<React.SVGProps<SVGSVGElement>, "name">,
     VariantProps<typeof iconVariants> {
-  /** Icon name */
+  /** Icon name - corresponds to SVG file in src/icons/svg/ */
   name: IconName;
 }
 
 /**
- * Icon component for displaying SVG icons.
- * Icons are pre-built React components with weight variants.
+ * Icon component for displaying SVG icons from the sprite.
+ * Icons are loaded from the SVG sprite generated at build time.
  */
 export const Icon = ({
   name,
@@ -50,18 +43,13 @@ export const Icon = ({
   className,
   ...props
 }: IconProps) => {
-  const IconComponent = iconMap[name];
-
-  if (!IconComponent) {
-    console.warn(`Icon "${name}" not found in iconMap`);
-    return null;
-  }
-
   return (
-    <IconComponent
+    <svg
       className={clsx(iconVariants({ size, weight }), className)}
       aria-hidden="true"
       {...props}
-    />
+    >
+      <use href={`#icon-${name}`} />
+    </svg>
   );
 };

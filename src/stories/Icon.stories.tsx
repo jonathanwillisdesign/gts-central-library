@@ -9,7 +9,7 @@ const meta = {
     docs: {
       description: {
         component:
-          "Icon component for displaying SVG icons from the icon library. Icons are pre-built React components with size and weight variants.",
+          "Icon component for displaying SVG icons from the sprite. Icons are SVG files in src/icons/svg/ that are auto-loaded at build time.",
       },
     },
   },
