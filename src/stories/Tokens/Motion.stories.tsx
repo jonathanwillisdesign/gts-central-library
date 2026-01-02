@@ -1,13 +1,14 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { useState } from 'react';
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { useState, useEffect } from "react";
 
 const meta = {
-  title: 'Design Tokens/Motion',
+  title: "Design Tokens/Motion",
   parameters: {
-    layout: 'padded',
+    layout: "padded",
     docs: {
       description: {
-        component: 'Motion tokens define animation durations and easing functions for consistent animations throughout the design system.',
+        component:
+          "Motion tokens define animation durations and easing functions for consistent animations throughout the design system.",
       },
     },
   },
@@ -16,122 +17,172 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-const motionTokens = {
-  'Duration': [
-    '--gl-motion-duration-none',
-    '--gl-motion-duration',
-    '--gl-motion-duration-slow',
-    '--gl-motion-duration-all',
-    '--gl-motion-duration-transform',
-    '--gl-motion-duration-opacity',
-  ],
-  'Easing': [
-    '--gl-motion-easing',
-    '--gl-motion-easing-all',
-    '--gl-motion-easing-transform',
-    '--gl-motion-easing-textcolor',
-    '--gl-motion-easing-backgroundcolor',
-    '--gl-motion-easing-opacity',
-  ],
-};
+// Animated box that moves back and forth to demonstrate duration
+const DurationDemo = ({
+  label,
+  duration,
+  easing,
+}: {
+  label: string;
+  duration: string;
+  easing: string;
+}) => {
+  const [isAnimating, setIsAnimating] = useState(false);
 
-const MotionTokenDisplay = ({ token }: { token: string }) => {
-  const value = getComputedStyle(document.documentElement)
-    .getPropertyValue(token)
-    .trim();
-  
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIsAnimating((prev) => !prev);
+    }, 2500);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <div style={{ marginBottom: '1rem', padding: '0.75rem', border: '1px solid #ddd', borderRadius: '4px' }}>
-      <div style={{ fontSize: '12px', fontWeight: 'bold', marginBottom: '0.25rem' }}>
-        {token}
+    <div style={{ marginBottom: "1.5rem" }}>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          marginBottom: "0.5rem",
+        }}
+      >
+        <span style={{ fontWeight: 700, fontSize: "14px" }}>{label}</span>
+        <span style={{ fontSize: "12px", color: "#666" }}>{duration}</span>
       </div>
-      <div style={{ fontSize: '11px', color: '#666' }}>{value || 'N/A'}</div>
+      <div
+        style={{
+          position: "relative",
+          height: "48px",
+          backgroundColor: "#f5f5f5",
+          borderRadius: "8px",
+          overflow: "hidden",
+        }}
+      >
+        <div
+          style={{
+            position: "absolute",
+            top: "8px",
+            left: isAnimating ? "calc(100% - 72px)" : "8px",
+            width: "64px",
+            height: "32px",
+            backgroundColor: "#000",
+            borderRadius: "4px",
+            transition: `left ${duration} ${easing}`,
+          }}
+        />
+      </div>
     </div>
   );
 };
 
-export const MotionTokens: Story = {
+export const Duration: Story = {
+  name: "Duration",
   render: () => (
     <div>
-      <h2>Motion Tokens</h2>
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem' }}>
-        <div>
-          <h3>Duration Tokens</h3>
-          {motionTokens['Duration'].map((token) => (
-            <MotionTokenDisplay key={token} token={token} />
-          ))}
-        </div>
-        <div>
-          <h3>Easing Tokens</h3>
-          {motionTokens['Easing'].map((token) => (
-            <MotionTokenDisplay key={token} token={token} />
-          ))}
-        </div>
-      </div>
+      <h2 style={{ marginBottom: "0.5rem" }}>Duration</h2>
+      <p style={{ color: "#666", marginBottom: "2rem" }}>
+        Animation duration tokens. Watch the elements move to compare speeds.
+      </p>
+
+      <DurationDemo
+        label="--gl-motion-duration-none"
+        duration="0s"
+        easing="cubic-bezier(0.3, 0, 0, 1)"
+      />
+      <DurationDemo
+        label="--gl-motion-duration"
+        duration="0.3s"
+        easing="cubic-bezier(0.3, 0, 0, 1)"
+      />
+      <DurationDemo
+        label="--gl-motion-duration-slow"
+        duration="0.7s"
+        easing="cubic-bezier(0.3, 0, 0, 1)"
+      />
+      <DurationDemo
+        label="--gl-animation-motion-duration-loading-shimmer"
+        duration="2s"
+        easing="cubic-bezier(0.3, 0, 0, 1)"
+      />
     </div>
   ),
 };
 
-const AnimatedBox = ({ duration, easing }: { duration: string; easing: string }) => {
-  const [isHovered, setIsHovered] = useState(false);
-  
+// Easing comparison demo
+const EasingDemo = ({
+  label,
+  easing,
+}: {
+  label: string;
+  easing: string;
+}) => {
+  const [isAnimating, setIsAnimating] = useState(false);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIsAnimating((prev) => !prev);
+    }, 2500);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <div
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      style={{
-        width: '150px',
-        height: '150px',
-        backgroundColor: isHovered ? 'var(--gl-color-blue)' : 'var(--gl-color-grey-400)',
-        borderRadius: '8px',
-        transition: `background-color ${duration} ${easing}`,
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        color: 'white',
-        fontWeight: 'bold',
-        cursor: 'pointer',
-      }}
-    >
-      Hover me
+    <div style={{ marginBottom: "1.5rem" }}>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          marginBottom: "0.5rem",
+        }}
+      >
+        <span style={{ fontWeight: 700, fontSize: "14px" }}>{label}</span>
+        <span style={{ fontSize: "12px", color: "#666", fontFamily: "monospace" }}>{easing}</span>
+      </div>
+      <div
+        style={{
+          position: "relative",
+          height: "48px",
+          backgroundColor: "#f5f5f5",
+          borderRadius: "8px",
+          overflow: "hidden",
+        }}
+      >
+        <div
+          style={{
+            position: "absolute",
+            top: "8px",
+            left: isAnimating ? "calc(100% - 72px)" : "8px",
+            width: "64px",
+            height: "32px",
+            backgroundColor: "#000",
+            borderRadius: "4px",
+            transition: `left 0.5s ${easing}`,
+          }}
+        />
+      </div>
     </div>
   );
 };
 
-export const MotionExamples: Story = {
-  render: () => {
-    const duration = getComputedStyle(document.documentElement)
-      .getPropertyValue('--gl-motion-duration')
-      .trim();
-    const easing = getComputedStyle(document.documentElement)
-      .getPropertyValue('--gl-motion-easing')
-      .trim();
-    
-    return (
-      <div>
-        <h2>Motion Examples</h2>
-        <p style={{ marginBottom: '2rem', color: '#666' }}>
-          Hover over the boxes to see animations using motion tokens.
-        </p>
-        <div style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap' }}>
-          <div>
-            <h3>Standard Duration & Easing</h3>
-            <AnimatedBox 
-              duration={duration || '0.3s'} 
-              easing={easing || 'cubic-bezier(0.3, 0, 0, 1)'} 
-            />
-          </div>
-        </div>
-        <div style={{ marginTop: '2rem', padding: '1rem', backgroundColor: '#f5f5f5', borderRadius: '4px' }}>
-          <h3>Usage in CSS</h3>
-          <pre style={{ fontSize: '12px', margin: 0 }}>
-{`.element {
-  transition: background-color var(--gl-motion-duration) var(--gl-motion-easing);
-}`}
-          </pre>
-        </div>
-      </div>
-    );
-  },
-};
+export const Easing: Story = {
+  name: "Easing",
+  render: () => (
+    <div>
+      <h2 style={{ marginBottom: "0.5rem" }}>Easing</h2>
+      <p style={{ color: "#666", marginBottom: "2rem" }}>
+        The standard easing curve used throughout the design system.
+      </p>
 
+      <EasingDemo
+        label="--gl-motion-easing"
+        easing="cubic-bezier(0.3, 0, 0, 1)"
+      />
+      <EasingDemo
+        label="Linear (for comparison)"
+        easing="linear"
+      />
+      <EasingDemo
+        label="Ease (for comparison)"
+        easing="ease"
+      />
+    </div>
+  ),
+};

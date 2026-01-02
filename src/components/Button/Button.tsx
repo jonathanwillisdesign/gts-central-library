@@ -84,7 +84,6 @@ export interface ButtonProps
       ) => React.ReactElement);
 }
 
-
 /**
  * Button component following the adidas Locker Room design system.
  * Supports multiple variants, modes, and states.
