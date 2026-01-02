@@ -4,7 +4,7 @@ import { clsx } from "clsx";
 import styles from "./Icon.module.css";
 
 // Import pre-built icon components
-import { ArrowRightIcon, type IconWeight } from "../../icons";
+import { ArrowRightIcon } from "../../icons";
 
 const iconMap = {
   "arrow-right": ArrowRightIcon,
@@ -12,6 +12,7 @@ const iconMap = {
 } as const;
 
 export type IconName = keyof typeof iconMap;
+export type IconWeight = "regular" | "bold";
 
 const iconVariants = cva(styles.icon, {
   variants: {
@@ -20,9 +21,14 @@ const iconVariants = cva(styles.icon, {
       medium: styles.iconMedium,
       large: styles.iconLarge,
     },
+    weight: {
+      regular: styles.weightRegular,
+      bold: styles.weightBold,
+    },
   },
   defaultVariants: {
     size: "medium",
+    weight: "regular",
   },
 });
 
@@ -31,8 +37,6 @@ export interface IconProps
     VariantProps<typeof iconVariants> {
   /** Icon name */
   name: IconName;
-  /** Icon weight */
-  weight?: IconWeight;
 }
 
 /**
@@ -42,7 +46,7 @@ export interface IconProps
 export const Icon = ({
   name,
   size,
-  weight = "regular",
+  weight,
   className,
   ...props
 }: IconProps) => {
@@ -55,8 +59,7 @@ export const Icon = ({
 
   return (
     <IconComponent
-      weight={weight}
-      className={clsx(iconVariants({ size }), className)}
+      className={clsx(iconVariants({ size, weight }), className)}
       aria-hidden="true"
       {...props}
     />

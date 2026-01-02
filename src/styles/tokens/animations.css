@@ -1,0 +1,20 @@
+/* Adidas Animation Tokens - Interactive element animation controls */
+
+:root,
+:after,
+:before {
+  /* Interactive hover animations */
+  --gl-animation-interactive-hover-duration: 0s;
+  --gl-animation-interactive-hover-easing: linear;
+
+  /* Interactive pressed animations */
+  --gl-animation-interactive-pressed-duration: 0s;
+  --gl-animation-interactive-pressed-easing: linear;
+
+  /* Focus animations (keep smooth for accessibility) */
+  --gl-animation-focus-duration: var(--gl-motion-duration, 0.3s);
+  --gl-animation-focus-easing: var(
+    --gl-motion-easing,
+    cubic-bezier(0.3, 0, 0, 1)
+  );
+}

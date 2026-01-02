@@ -32,7 +32,8 @@ const meta = {
     state: {
       control: "select",
       options: ["default", "loading", "disabled"],
-      description: "Button state (interactive states like hover/pressed are handled by CSS)",
+      description:
+        "Button state (interactive states like hover/pressed are handled by CSS)",
     },
     label: {
       control: "text",

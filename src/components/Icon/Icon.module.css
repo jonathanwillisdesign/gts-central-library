@@ -7,6 +7,7 @@
   color: inherit;
 }
 
+/* Size variants */
 .iconSmall {
   width: 16px;
   height: 16px;
@@ -20,5 +21,14 @@
 .iconLarge {
   width: 32px;
   height: 32px;
+}
+
+/* Weight variants */
+.weightRegular {
+  --gl-icon-stroke-width: var(--gl-icon-stroke-regular);
+}
+
+.weightBold {
+  --gl-icon-stroke-width: var(--gl-icon-stroke-bold);
 }
 

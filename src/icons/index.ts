@@ -1,1 +1,1 @@
-export { ArrowRightIcon, type IconWeight } from "./ArrowRightIcon";
+export { ArrowRightIcon } from "./ArrowRightIcon";

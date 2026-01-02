@@ -1,0 +1,10 @@
+/* Icon Tokens */
+
+:root,
+:after,
+:before {
+  /* Icon Stroke Weights */
+  --gl-icon-stroke-regular: 1;
+  --gl-icon-stroke-bold: 1.5;
+}
+

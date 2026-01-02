@@ -15,9 +15,13 @@
   letter-spacing: 2px;
   text-transform: uppercase;
   text-decoration: none;
-  transition: background-color var(--gl-motion-duration, 0.3s) var(--gl-motion-easing, cubic-bezier(0.3, 0, 0, 1)),
-              border-color var(--gl-motion-duration, 0.3s) var(--gl-motion-easing, cubic-bezier(0.3, 0, 0, 1)),
-              color var(--gl-motion-duration, 0.3s) var(--gl-motion-easing, cubic-bezier(0.3, 0, 0, 1));
+  transition: background-color
+      var(--gl-animation-interactive-hover-duration, 0s)
+      var(--gl-animation-interactive-hover-easing, linear),
+    border-color var(--gl-animation-interactive-hover-duration, 0s)
+      var(--gl-animation-interactive-hover-easing, linear),
+    color var(--gl-animation-interactive-hover-duration, 0s)
+      var(--gl-animation-interactive-hover-easing, linear);
   gap: var(--gl-spacing-0150, 15px);
   padding: var(--gl-spacing-0150, 15px) var(--gl-spacing-0200, 20px);
   min-height: 48px;
@@ -25,7 +29,8 @@
 
 .button:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 2px var(--gl-color-background, #ffffff), 0 0 0 4px var(--gl-color-border-inverse, #000000);
+  box-shadow: 0 0 0 2px var(--gl-color-background, #ffffff),
+    0 0 0 4px var(--gl-color-border-inverse, #000000);
 }
 
 .button:disabled {
@@ -79,7 +84,8 @@
     var(--gl-color-grey-100, #eceff1) 50%,
     transparent 100%
   );
-  animation: shimmer var(--gl-animation-motion-duration-loading-shimmer, 2s) infinite;
+  animation: shimmer var(--gl-animation-motion-duration-loading-shimmer, 2s)
+    infinite;
 }
 
 .buttonLoading .label,
@@ -218,4 +224,3 @@
   outline: 2px solid var(--gl-color-border-inverse, #000000);
   outline-offset: 0;
 }
-
