@@ -1,16 +1,14 @@
-import type { StorybookConfig } from '@storybook/react-vite';
+import type { StorybookConfig } from "@storybook/react-vite";
 
 const config: StorybookConfig = {
-  "stories": [
-    "../src/**/*.mdx",
-    "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"
-  ],
-  "addons": [
+  stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
+  addons: [
     "@storybook/addon-a11y",
     "@storybook/addon-docs",
     "@storybook/addon-onboarding",
-    "@storybook/addon-designs"
+    "@storybook/addon-designs",
   ],
-  "framework": "@storybook/react-vite"
+  framework: "@storybook/react-vite",
+  // Storybook uses vite.config.ts automatically, which has SVGR configured
 };
 export default config;
