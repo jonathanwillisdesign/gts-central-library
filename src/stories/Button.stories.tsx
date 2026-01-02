@@ -48,11 +48,29 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Base: Story = {
+export const Primary: Story = {
   args: {
     label: "Call to action",
     mode: "base",
     variant: "primary",
+    state: "default",
+  },
+};
+
+export const Secondary: Story = {
+  args: {
+    label: "Call to action",
+    mode: "base",
+    variant: "secondary",
+    state: "default",
+  },
+};
+
+export const Tertiary: Story = {
+  args: {
+    label: "Call to action",
+    mode: "base",
+    variant: "tertiary",
     state: "default",
   },
 };

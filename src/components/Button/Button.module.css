@@ -17,8 +17,7 @@
   text-decoration: none;
   transition: background-color var(--gl-motion-duration, 0.3s) var(--gl-motion-easing, cubic-bezier(0.3, 0, 0, 1)),
               border-color var(--gl-motion-duration, 0.3s) var(--gl-motion-easing, cubic-bezier(0.3, 0, 0, 1)),
-              color var(--gl-motion-duration, 0.3s) var(--gl-motion-easing, cubic-bezier(0.3, 0, 0, 1)),
-              box-shadow var(--gl-motion-duration, 0.3s) var(--gl-motion-easing, cubic-bezier(0.3, 0, 0, 1));
+              color var(--gl-motion-duration, 0.3s) var(--gl-motion-easing, cubic-bezier(0.3, 0, 0, 1));
   gap: var(--gl-spacing-0150, 15px);
   padding: var(--gl-spacing-0150, 15px) var(--gl-spacing-0200, 20px);
   min-height: 48px;
@@ -179,7 +178,7 @@
 /* Tertiary Variant - Base Mode */
 .buttonTertiaryBase {
   background-color: transparent;
-  border-color: transparent;
+  border: none;
   color: var(--gl-color-text, #000000);
   padding: var(--gl-spacing-0100, 10px) 0;
   gap: var(--gl-spacing-0100, 10px);
@@ -194,13 +193,14 @@
 }
 
 .buttonTertiaryBase:focus-visible {
-  box-shadow: 0 0 0 2px var(--gl-color-border-inverse, #000000);
+  outline: 2px solid var(--gl-color-border-inverse, #000000);
+  outline-offset: 0;
 }
 
 /* Tertiary Variant - Destructive Mode */
 .buttonTertiaryDestructive {
   background-color: transparent;
-  border-color: transparent;
+  border: none;
   color: var(--gl-color-error-text, #e32b2b);
   padding: var(--gl-spacing-0100, 10px) 0;
   gap: var(--gl-spacing-0100, 10px);
@@ -215,6 +215,7 @@
 }
 
 .buttonTertiaryDestructive:focus-visible {
-  box-shadow: 0 0 0 2px var(--gl-color-border-inverse, #000000);
+  outline: 2px solid var(--gl-color-border-inverse, #000000);
+  outline-offset: 0;
 }
 
