@@ -1,0 +1,25 @@
+/* Base Reset Styles */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(
+    --gl-body-font-set-family-functional-4,
+    var(--gl-font-family-fallback)
+  );
+  font-size: var(--gl-body-font-set-size-functional-4, 14px);
+  line-height: var(--gl-body-font-set-lineheight-functional-4, 20px);
+  color: var(--gl-color-text);
+  background-color: var(--gl-color-background);
+}

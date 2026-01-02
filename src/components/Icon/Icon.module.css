@@ -1,0 +1,24 @@
+/* Icon Component Styles using Design Tokens */
+
+.icon {
+  display: inline-block;
+  flex-shrink: 0;
+  fill: currentColor;
+  color: inherit;
+}
+
+.iconSmall {
+  width: 16px;
+  height: 16px;
+}
+
+.iconMedium {
+  width: 24px;
+  height: 24px;
+}
+
+.iconLarge {
+  width: 32px;
+  height: 32px;
+}
+

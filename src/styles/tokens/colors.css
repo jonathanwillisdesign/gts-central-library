@@ -1,0 +1,161 @@
+/* Adidas Color Tokens */
+
+:root,
+:after,
+:before {
+  /* Base Colors */
+  --gl-color-black: #000000;
+  --gl-color-white: #ffffff;
+  --gl-color-blue: #007bc6;
+  --gl-color-grey-100: #eceff1;
+  --gl-color-grey-400: #d3d7da;
+  --gl-color-grey-700: #767677;
+  --gl-color-red: #e32b2b;
+  --gl-color-orange: #d98916;
+  --gl-color-green: #00aa55;
+  --gl-color-adiclubblue: #0081c7;
+  --gl-color-offwhite: #f5f5e5;
+  --gl-color-tracekhaki: #a39582;
+  --gl-color-tracemaroon: #b56971;
+  --gl-color-ashgreen: #a7c1b9;
+  --gl-color-rawgrey: #6d8194;
+  --gl-color-legendink: #3a3e4f;
+  --gl-color-shockyellow: #ede734;
+  --gl-color-shockpink: #da1a7b;
+  --gl-color-brightblue: #0071ae;
+  --gl-color-hiresaqua: #00a2a2;
+  --gl-color-shocklime: #2ada71;
+  --gl-color-yeezyblack: #282c31;
+  --gl-color-yeezyoffwhite: #ecebdf;
+  --gl-color-looppink: #d92f4c;
+  --gl-color-loopdarkpink: #b6223c;
+  --gl-color-transparent: rgba(255, 255, 255, 0);
+  --gl-color-black-070: rgba(0, 0, 0, 0.7);
+
+  /* Brand Colors */
+  --gl-color-brand-p1: #000000;
+  --gl-color-brand-p2: #ffffff;
+  --gl-color-brand-p3: #007bc6;
+
+  /* Membership Colors */
+  --gl-color-membership-s1: #0081c7;
+  --gl-color-membership-s2: #a39582;
+  --gl-color-membership-s3: #a7c1b9;
+  --gl-color-membership-s4: #b56971;
+  --gl-color-membership-s5: #6d8194;
+
+  /* Neutral Colors */
+  --gl-color-neutral-s1: #f5f5e5;
+  --gl-color-neutral-s2: #a39582;
+  --gl-color-neutral-s3: #b56971;
+  --gl-color-neutral-s4: #a7c1b9;
+  --gl-color-neutral-s5: #6d8194;
+  --gl-color-neutral-s6: #3a3e4f;
+
+  /* Bright Colors */
+  --gl-color-bright-s1: #ede734;
+  --gl-color-bright-s2: #e32b2b;
+  --gl-color-bright-s3: #da1a7b;
+  --gl-color-bright-s4: #0071ae;
+  --gl-color-bright-s5: #00a2a2;
+  --gl-color-bright-s6: #2ada71;
+
+  /* Franchise Colors */
+  --gl-color-franchise-s1: #282c31;
+  --gl-color-franchise-s2: #ecebdf;
+  --gl-color-franchise-s3: #d92f4c;
+  --gl-color-franchise-s4: #b6223c;
+
+  /* Background Colors */
+  --gl-color-background: #ffffff;
+  --gl-color-background-inverse: #000000;
+  --gl-color-background-alternative: #eceff1;
+  --gl-color-background-disabled: #767677;
+  --gl-color-background-membership: #0081c7;
+  --gl-color-background-membership-hover: #0081c7;
+  --gl-color-background-alternative-hover: #ffffff;
+  --gl-color-background-highlight: #ede734;
+  --gl-color-background-alternative-highlight: #2ada71;
+  --gl-color-sale-background: #e32b2b;
+  --gl-color-background-transparent: rgba(255, 255, 255, 0);
+
+  /* Border Colors */
+  --gl-color-border-alternative-inverse: rgba(255, 255, 255, 0);
+  --gl-color-border-inverse: #000000;
+  --gl-color-border-alternative: #ffffff;
+  --gl-color-border-hover: #000000;
+  --gl-color-border-active: #000000;
+  --gl-color-border-alternative-active: #000000;
+  --gl-color-border-navigational: #d3d7da;
+  --gl-color-border-navigational-inverse: #ffffff;
+  --gl-color-border-navigational-hover: #767677;
+  --gl-color-border-functional: #767677;
+  --gl-color-border-disabled: #767677;
+  --gl-color-error-border: #e32b2b;
+  --gl-color-success-border: #00aa55;
+  --gl-color-border-membership: #0081c7;
+  --gl-color-border-membership-inverse: #0081c7;
+  --gl-color-border-membership-hover: #0081c7;
+
+  /* Text Colors */
+  --gl-color-disabled: #767677;
+  --gl-color-error: #e32b2b;
+  --gl-color-icon: #000000;
+  --gl-icon-color-inverse: #ffffff;
+  --gl-icon-color-hover: #767677;
+  --gl-icon-color-error: #e32b2b;
+  --gl-icon-color-success: #00aa55;
+  --gl-color-success: #00aa55;
+  --gl-color-text: #000000;
+  --gl-color-text-alternative: #767677;
+  --gl-color-text-inverse: #ffffff;
+  --gl-color-text-disabled: #767677;
+  --gl-color-text-hover: #767677;
+  --gl-color-text-hover-alternative: #767677;
+  --gl-color-error-text: #e32b2b;
+  --gl-color-success-text: #00aa55;
+  --gl-color-text-membership: #0081c7;
+  --gl-color-sale-text: #e32b2b;
+  --gl-color-warning: #d98916;
+  --gl-overlay-color-background: rgba(0, 0, 0, 0.7);
+  --gl-placeholder-color-text: #767677;
+
+  /* Button Colors */
+  --gl-button-background-hover: #000000;
+  --gl-button-color-border-primary-inverse: #ffffff;
+  --gl-button-color-border-primary: #000000;
+  --gl-button-color-border-secondary-inverse: #ffffff;
+  --gl-button-color-border-secondary: #000000;
+  --gl-button-color-border-secondary-hover: #000000;
+  --gl-button-color-border-secondary-hoverinverse: #ffffff;
+
+  /* Component Colors */
+  --gl-callout-color-background: #eceff1;
+  --gl-callout-color-background-alternative: #f5f5e5;
+  --gl-callout-color-border-urgent: rgba(255, 255, 255, 0);
+  --gl-callout-color-background-veryurgent: #000000;
+  --gl-dropdown-color-background-hover: #eceff1;
+  --gl-label-color-text: #767677;
+  --gl-timer-color-background: rgba(255, 255, 255, 0);
+  --gl-timer-color-progress-background: #767677;
+  --gl-tooltip-color-background: #eceff1;
+  --gl-app-icon-color-deselected: #d3d7da;
+  --gl-app-color-text-deselected: #d3d7da;
+  --gl-app-color-text-deselected-inverse: #767677;
+  --gl-app-button-color-background: #000000;
+  --gl-app-button-color-background-inverse: #ffffff;
+  --gl-app-button-color-background-disabled: #d3d7da;
+  --gl-app-button-color-background-disabled-inverse: #767677;
+  --gl-app-button-color-border: #000000;
+  --gl-app-button-color-border-deselected: #d3d7da;
+  --gl-app-button-color-border-inverse: #ffffff;
+  --gl-app-button-color-border-deselected-inverse: #767677;
+  --gl-app-callout-color-background-inverse: #ffffff;
+  --gl-app-divider-color: #d3d7da;
+  --gl-app-divider-color-inverse: #767677;
+  --gl-app-badge-color-background: #ffffff;
+  --gl-app-badge-color-background-inverse: #000000;
+  --gl-app-badge-color-sale: #e32b2b;
+  --gl-app-badge-color-warning: #d98916;
+}
+

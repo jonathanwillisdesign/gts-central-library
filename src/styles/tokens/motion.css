@@ -1,0 +1,29 @@
+/* Adidas Motion/Animation Tokens */
+
+:root,
+:after,
+:before {
+  --gl-motion-duration-none: 0s;
+  --gl-motion-duration: 0.3s;
+  --gl-motion-duration-slow: 0.7s;
+  --gl-motion-easing: cubic-bezier(0.3, 0, 0, 1);
+  --gl-motion-duration-all: 0.3s;
+  --gl-motion-easing-all: cubic-bezier(0.3, 0, 0, 1);
+  --gl-animation-motion-duration-loading: 0.7s;
+  --gl-animation-motion-duration-loading-shimmer: 2s;
+  --gl-motion-duration-transform: 0.3s;
+  --gl-motion-easing-transform: cubic-bezier(0.3, 0, 0, 1);
+  --gl-motion-duration-transform-press: 0.3s;
+  --gl-motion-easing-transform-press: cubic-bezier(0.3, 0, 0, 1);
+  --gl-motion-duration-textcolor: 0.3s;
+  --gl-motion-easing-textcolor: cubic-bezier(0.3, 0, 0, 1);
+  --gl-icon-motion-duration-color: 0.3s;
+  --gl-icon-motion-easing-color: cubic-bezier(0.3, 0, 0, 1);
+  --gl-motion-duration-backgroundcolor: 0.3s;
+  --gl-motion-easing-backgroundcolor: cubic-bezier(0.3, 0, 0, 1);
+  --gl-motion-duration-opacity: 0.3s;
+  --gl-motion-easing-opacity: cubic-bezier(0.3, 0, 0, 1);
+  --gl-motion-duration-bordercolor: 0.3s;
+  --gl-motion-easing-bordercolor: cubic-bezier(0.3, 0, 0, 1);
+}
+

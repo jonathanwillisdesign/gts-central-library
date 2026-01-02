@@ -1,0 +1,20 @@
+/* Adidas Spacing Tokens */
+
+:root,
+:after,
+:before {
+  --gl-spacing-0000: 0px;
+  --gl-spacing-0025: 2.5px;
+  --gl-spacing-0050: 5px;
+  --gl-spacing-0100: 10px;
+  --gl-spacing-0150: 15px;
+  --gl-spacing-0200: 20px;
+  --gl-spacing-0300: 30px;
+  --gl-spacing-0400: 40px;
+  --gl-spacing-0600: 60px;
+  --gl-spacing-0800: 80px;
+  --gl-spacing-1000: 100px;
+  --gl-spacing-1200: 120px;
+  --gl-spacing-1500: 150px;
+}
+

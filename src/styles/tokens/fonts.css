@@ -1,0 +1,68 @@
+/* Adidas Font Face Declarations */
+
+@font-face {
+  font-display: swap;
+  font-family: AdihausDIN;
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://esm.glass.adidas.com/@adl/brand-adidas-asset-fonts@2.7.0/dist/AdihausDIN-Regular.woff2)
+      format("woff2"),
+    url(https://esm.glass.adidas.com/@adl/brand-adidas-asset-fonts@2.7.0/dist/AdihausDIN-Regular.woff)
+      format("woff");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: AdihausDIN;
+  font-style: normal;
+  font-weight: 700;
+  src: url(https://esm.glass.adidas.com/@adl/brand-adidas-asset-fonts@2.7.0/dist/AdihausDIN-Bold.woff2)
+      format("woff2"),
+    url(https://esm.glass.adidas.com/@adl/brand-adidas-asset-fonts@2.7.0/dist/AdihausDIN-Bold.woff)
+      format("woff");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: AdihausDIN Cn;
+  font-style: normal;
+  font-weight: 500;
+  src: url(https://esm.glass.adidas.com/@adl/brand-adidas-asset-fonts@2.7.0/dist/AdihausDIN-CnMediumItalic.woff2)
+      format("woff2"),
+    url(https://esm.glass.adidas.com/@adl/brand-adidas-asset-fonts@2.7.0/dist/AdihausDIN-CnMediumItalic.woff)
+      format("woff");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: AdineuePRO;
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://esm.glass.adidas.com/@adl/brand-adidas-asset-fonts@2.7.0/dist/adineuePRO-Regular.woff2)
+      format("woff2"),
+    url(https://esm.glass.adidas.com/@adl/brand-adidas-asset-fonts@2.7.0/dist/adineuePRO-Regular.woff)
+      format("woff");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: AdineuePRO;
+  font-style: normal;
+  font-weight: 700;
+  src: url(https://esm.glass.adidas.com/@adl/brand-adidas-asset-fonts@2.7.0/dist/adineuePRO-Bold.woff2)
+      format("woff2"),
+    url(https://esm.glass.adidas.com/@adl/brand-adidas-asset-fonts@2.7.0/dist/adineuePRO-Bold.woff)
+      format("woff");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: adidasFG;
+  font-style: normal;
+  font-weight: 700;
+  src: url(https://esm.glass.adidas.com/@adl/brand-adidas-asset-fonts@2.7.0/dist/adidasFG-CompressedBold.woff2)
+      format("woff2"),
+    url(https://esm.glass.adidas.com/@adl/brand-adidas-asset-fonts@2.7.0/dist/adidasFG-CompressedBold.woff)
+      format("woff");
+}
+
