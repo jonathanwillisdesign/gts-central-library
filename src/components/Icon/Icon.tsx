@@ -1,15 +1,14 @@
 import React from "react";
-import { useRender } from "@base-ui/react/use-render";
 import { cva, type VariantProps } from "class-variance-authority";
 import { clsx } from "clsx";
 import styles from "./Icon.module.css";
 
-// Import icons as React components
-import ArrowRightIcon from "../../icons/arrow-right.svg?react";
+// Import pre-built icon components
+import { ArrowRightIcon, type IconWeight } from "../../icons";
 
 const iconMap = {
   "arrow-right": ArrowRightIcon,
-  // Add more icons here as you import them
+  // Add more icons here as you create them
 } as const;
 
 export type IconName = keyof typeof iconMap;
@@ -32,43 +31,34 @@ export interface IconProps
     VariantProps<typeof iconVariants> {
   /** Icon name */
   name: IconName;
-  /** Render prop to customize the underlying element */
-  render?:
-    | React.ReactElement
-    | ((props: React.SVGProps<SVGSVGElement>) => React.ReactElement);
+  /** Icon weight */
+  weight?: IconWeight;
 }
 
 /**
  * Icon component for displaying SVG icons.
- * Uses SVGR to convert SVG files into React components.
+ * Icons are pre-built React components with weight variants.
  */
 export const Icon = ({
   name,
   size,
+  weight = "regular",
   className,
-  render,
   ...props
 }: IconProps) => {
   const IconComponent = iconMap[name];
 
-  const defaultProps = {
-    className: clsx(iconVariants({ size }), className),
-    "aria-hidden": true,
-    ...props,
-  } as React.SVGProps<SVGSVGElement> & Record<string, unknown>;
-
-  const element = useRender({
-    defaultTagName: "svg",
-    render,
-    props: defaultProps,
-  });
-
-  // If render prop is provided, use useRender result
-  if (render) {
-    return element;
+  if (!IconComponent) {
+    console.warn(`Icon "${name}" not found in iconMap`);
+    return null;
   }
 
-  // Otherwise, render the icon component directly
-  return <IconComponent {...defaultProps} />;
+  return (
+    <IconComponent
+      weight={weight}
+      className={clsx(iconVariants({ size }), className)}
+      aria-hidden="true"
+      {...props}
+    />
+  );
 };
-

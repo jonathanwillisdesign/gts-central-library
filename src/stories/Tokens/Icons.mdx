@@ -1,0 +1,134 @@
+import { Meta, IconGallery, IconItem } from "@storybook/addon-docs/blocks";
+import { Icon } from "../../components/Icon";
+
+<Meta title="Design Tokens/Icons" />
+
+# Icon Gallery
+
+Icons used throughout the adidas Locker Room design system. Icons are pre-built React components with weight variants.
+
+## Available Icons
+
+### Regular Weight
+
+<IconGallery>
+  <IconItem name="arrow-right">
+    <Icon name="arrow-right" weight="regular" />
+  </IconItem>
+</IconGallery>
+
+### Bold Weight
+
+<IconGallery>
+  <IconItem name="arrow-right (bold)">
+    <Icon name="arrow-right" weight="bold" />
+  </IconItem>
+</IconGallery>
+
+## Size Variants
+
+Icons come in three sizes: small (16px), medium (24px), and large (32px).
+
+<div
+  style={{
+    display: "flex",
+    alignItems: "center",
+    gap: "32px",
+    marginTop: "24px",
+  }}
+>
+  <div
+    style={{
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      gap: "8px",
+    }}
+  >
+    <Icon name="arrow-right" size="small" />
+    <span style={{ fontSize: "12px", color: "#666" }}>Small (16px)</span>
+  </div>
+  <div
+    style={{
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      gap: "8px",
+    }}
+  >
+    <Icon name="arrow-right" size="medium" />
+    <span style={{ fontSize: "12px", color: "#666" }}>Medium (24px)</span>
+  </div>
+  <div
+    style={{
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      gap: "8px",
+    }}
+  >
+    <Icon name="arrow-right" size="large" />
+    <span style={{ fontSize: "12px", color: "#666" }}>Large (32px)</span>
+  </div>
+</div>
+
+## Weight Comparison
+
+<div
+  style={{
+    display: "flex",
+    alignItems: "center",
+    gap: "32px",
+    marginTop: "24px",
+  }}
+>
+  <div
+    style={{
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      gap: "8px",
+    }}
+  >
+    <Icon name="arrow-right" size="large" weight="regular" />
+    <span style={{ fontSize: "12px", color: "#666" }}>Regular</span>
+  </div>
+  <div
+    style={{
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      gap: "8px",
+    }}
+  >
+    <Icon name="arrow-right" size="large" weight="bold" />
+    <span style={{ fontSize: "12px", color: "#666" }}>Bold</span>
+  </div>
+</div>
+
+## Usage
+
+```tsx
+import { Icon } from "@gts/central-library";
+
+// Default (regular weight, medium size)
+<Icon name="arrow-right" />
+
+// Bold weight
+<Icon name="arrow-right" weight="bold" />
+
+// With size variant
+<Icon name="arrow-right" size="large" weight="bold" />
+
+// With custom className
+<Icon name="arrow-right" className="my-custom-class" />
+```
+
+## Props
+
+| Prop        | Type                             | Default     | Description            |
+| ----------- | -------------------------------- | ----------- | ---------------------- |
+| `name`      | `"arrow-right"`                  | -           | Icon name (required)   |
+| `size`      | `"small" \| "medium" \| "large"` | `"medium"`  | Icon size              |
+| `weight`    | `"regular" \| "bold"`            | `"regular"` | Icon stroke weight     |
+| `className` | `string`                         | -           | Additional CSS classes |
