@@ -1,5 +1,5 @@
 ---
-description: "Guidelines for creating and managing Cursor rules in this project"
+description: When creating cursor rules
 alwaysApply: false
 ---
 
@@ -20,11 +20,12 @@ All Cursor rules should be created in `.cursor/rules/` following this structure:
 Each `RULE.md` file must include:
 
 1. **Frontmatter metadata** (YAML format):
+
    ```markdown
    ---
    description: "Brief description of what this rule does"
    alwaysApply: true|false
-   globs: ["pattern/**/*.ts"]  # Optional: for file-specific rules
+   globs: ["pattern/**/*.ts"] # Optional: for file-specific rules
    ---
    ```
 
@@ -71,6 +72,7 @@ globs: ["src/api/**/*.ts"]
 # API Validation Rules
 
 When working in the API directory:
+
 - Use zod for all validation
 - Define return types with zod schemas
 - Export types generated from schemas
@@ -81,4 +83,3 @@ When working in the API directory:
 ## Legacy Format
 
 The legacy `.cursorrules` file format is deprecated. All new rules should use the `.cursor/rules/` folder structure.
-
