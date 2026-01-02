@@ -6,7 +6,8 @@
   justify-content: center;
   position: relative;
   cursor: pointer;
-  border: none;
+  /* Use 2px transparent border to reserve space and prevent layout shift */
+  border: 2px solid transparent;
   font-family: var(--gl-body-font-set-family-functional-3, AdihausDIN);
   font-size: 16px;
   font-weight: var(--gl-body-font-set-weight-functional-3, 700);
@@ -14,10 +15,18 @@
   letter-spacing: 2px;
   text-transform: uppercase;
   text-decoration: none;
-  transition: all var(--gl-motion-duration, 0.3s) var(--gl-motion-easing, cubic-bezier(0.3, 0, 0, 1));
+  transition: background-color var(--gl-motion-duration, 0.3s) var(--gl-motion-easing, cubic-bezier(0.3, 0, 0, 1)),
+              border-color var(--gl-motion-duration, 0.3s) var(--gl-motion-easing, cubic-bezier(0.3, 0, 0, 1)),
+              color var(--gl-motion-duration, 0.3s) var(--gl-motion-easing, cubic-bezier(0.3, 0, 0, 1)),
+              box-shadow var(--gl-motion-duration, 0.3s) var(--gl-motion-easing, cubic-bezier(0.3, 0, 0, 1));
   gap: var(--gl-spacing-0150, 15px);
   padding: var(--gl-spacing-0150, 15px) var(--gl-spacing-0200, 20px);
   min-height: 48px;
+}
+
+.button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--gl-color-background, #ffffff), 0 0 0 4px var(--gl-color-border-inverse, #000000);
 }
 
 .button:disabled {
@@ -55,7 +64,7 @@
 /* Secondary buttons need a light grey border when loading */
 .buttonSecondaryBase.buttonLoading,
 .buttonSecondaryDestructive.buttonLoading {
-  border: 1px solid var(--gl-color-grey-400, #d3d7da) !important;
+  border-color: var(--gl-color-grey-400, #d3d7da) !important;
 }
 
 .buttonLoading::before {
@@ -96,12 +105,12 @@
 
 .buttonPrimaryBase:hover:not(:disabled) {
   background-color: var(--gl-color-grey-700, #767677);
-  border: 1px solid var(--gl-color-border-hover, #000000);
+  border-color: var(--gl-color-border-hover, #000000);
 }
 
 .buttonPrimaryBase:active:not(:disabled) {
   background-color: var(--gl-color-background-alternative, #eceff1);
-  border: 2px solid var(--gl-color-border-active, #000000);
+  border-color: var(--gl-color-border-active, #000000);
   color: var(--gl-color-text, #000000);
 }
 
@@ -115,12 +124,12 @@
 
 .buttonPrimaryDestructive:hover:not(:disabled) {
   background-color: var(--gl-color-grey-700, #767677);
-  border: 1px solid var(--gl-color-border-hover, #000000);
+  border-color: var(--gl-color-border-hover, #000000);
 }
 
 .buttonPrimaryDestructive:active:not(:disabled) {
   background-color: var(--gl-color-background-alternative, #eceff1);
-  border: 2px solid var(--gl-color-border-active, #000000);
+  border-color: var(--gl-color-border-active, #000000);
   color: var(--gl-color-text, #000000);
 }
 
@@ -129,18 +138,18 @@
 /* Secondary Variant - Base Mode */
 .buttonSecondaryBase {
   background-color: var(--gl-color-background, #ffffff);
-  border: 1px solid var(--gl-color-border-inverse, #000000);
+  border-color: var(--gl-color-border-inverse, #000000);
   color: var(--gl-color-text, #000000);
 }
 
 .buttonSecondaryBase:hover:not(:disabled) {
   background-color: var(--gl-color-background-alternative, #eceff1);
-  border: 1px solid var(--gl-color-border-hover, #000000);
+  border-color: var(--gl-color-border-hover, #000000);
 }
 
 .buttonSecondaryBase:active:not(:disabled) {
   background-color: var(--gl-color-brand-p1, #000000);
-  border: 2px solid var(--gl-color-grey-700, #767677);
+  border-color: var(--gl-color-grey-700, #767677);
   color: var(--gl-color-text-inverse, #ffffff);
 }
 
@@ -149,19 +158,19 @@
 /* Secondary Variant - Destructive Mode */
 .buttonSecondaryDestructive {
   background-color: var(--gl-color-background, #ffffff);
-  border: 1px solid var(--gl-color-error-border, #e32b2b);
+  border-color: var(--gl-color-error-border, #e32b2b);
   color: var(--gl-color-error-text, #e32b2b);
 }
 
 .buttonSecondaryDestructive:hover:not(:disabled) {
   background-color: var(--gl-color-background-alternative, #eceff1);
-  border: 1px solid var(--gl-color-border-hover, #000000);
+  border-color: var(--gl-color-border-hover, #000000);
   color: var(--gl-color-text, #000000);
 }
 
 .buttonSecondaryDestructive:active:not(:disabled) {
   background-color: var(--gl-color-error, #e32b2b);
-  border: 2px solid var(--gl-color-border-active, #000000);
+  border-color: var(--gl-color-border-active, #000000);
   color: var(--gl-color-text-inverse, #ffffff);
 }
 
@@ -170,7 +179,7 @@
 /* Tertiary Variant - Base Mode */
 .buttonTertiaryBase {
   background-color: transparent;
-  border: none;
+  border-color: transparent;
   color: var(--gl-color-text, #000000);
   padding: var(--gl-spacing-0100, 10px) 0;
   gap: var(--gl-spacing-0100, 10px);
@@ -184,10 +193,14 @@
   text-decoration: underline;
 }
 
+.buttonTertiaryBase:focus-visible {
+  box-shadow: 0 0 0 2px var(--gl-color-border-inverse, #000000);
+}
+
 /* Tertiary Variant - Destructive Mode */
 .buttonTertiaryDestructive {
   background-color: transparent;
-  border: none;
+  border-color: transparent;
   color: var(--gl-color-error-text, #e32b2b);
   padding: var(--gl-spacing-0100, 10px) 0;
   gap: var(--gl-spacing-0100, 10px);
@@ -199,5 +212,9 @@
 
 .buttonTertiaryDestructive:active:not(:disabled) {
   text-decoration: underline;
+}
+
+.buttonTertiaryDestructive:focus-visible {
+  box-shadow: 0 0 0 2px var(--gl-color-border-inverse, #000000);
 }
 
