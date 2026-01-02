@@ -1,73 +1,79 @@
-# React + TypeScript + Vite
+# GTS Central Library
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A design system and component library for the **Locker Room** product at adidas. This library provides a centralized collection of design tokens, React components, and utilities to ensure visual consistency and accelerate development.
 
-Currently, two official plugins are available:
+## Purpose
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+GTS Central Library serves as the single source of truth for:
 
-## React Compiler
+- **Design Tokens** — Colors, typography, spacing, motion, and shadows as CSS custom properties
+- **React Components** — Production-ready, accessible components built with TypeScript
+- **Icons** — A curated icon set optimized for the Locker Room ecosystem
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+This package is designed to be consumed by AI-powered design and development tools such as [Figma Make](https://www.figma.com) and [Lovable](https://lovable.dev), enabling rapid prototyping and consistent implementation across platforms.
 
-## Expanding the ESLint configuration
+## Installation
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install gts-central-library
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+bun add gts-central-library
 ```
+
+## Quick Start
+
+Import the global styles to access all design tokens:
+
+```tsx
+import 'gts-central-library/styles';
+```
+
+Use components in your application:
+
+```tsx
+import { Button, Icon } from 'gts-central-library';
+
+function App() {
+  return (
+    <Button variant="primary" size="medium">
+      Get Started
+      <Icon name="arrow-right" />
+    </Button>
+  );
+}
+```
+
+## Design Tokens
+
+All tokens use the `--gl-` prefix and are organized by category:
+
+| Category   | Prefix                     | Example                        |
+| ---------- | -------------------------- | ------------------------------ |
+| Colors     | `--gl-color-*`             | `--gl-color-brand-primary`     |
+| Typography | `--gl-body-font-set-*`     | `--gl-body-font-set-medium`    |
+| Spacing    | `--gl-spacing-*`           | `--gl-spacing-16`              |
+| Motion     | `--gl-motion-*`            | `--gl-motion-duration-normal`  |
+| Shadows    | `--gl-web-shadow-*`        | `--gl-web-shadow-elevation-1`  |
+
+## Documentation
+
+Run Storybook locally to explore components and tokens:
+
+```bash
+bun install
+bun run storybook
+```
+
+## Tech Stack
+
+- React 19 with TypeScript
+- Vite for build tooling
+- CSS Modules + CSS Custom Properties
+- Class Variance Authority for component variants
+- Storybook for documentation
+
+## License
+
+Proprietary — adidas internal use only.
